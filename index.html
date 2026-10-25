@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" data-theme="ink">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Mind Atlas — a catalogued, explorable notebook." />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>Mind Atlas</title>
+    <!-- Typefaces: EB Garamond for reading, Cormorant SC for small-caps display, IBM Plex Mono for catalogue data. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Apply the saved theme before first paint to avoid a flash of the wrong palette.
+      try {
+        var saved = JSON.parse(localStorage.getItem('mind-atlas:v1') || '{}');
+        if (saved && saved.settings && saved.settings.theme) document.documentElement.dataset.theme = saved.settings.theme;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

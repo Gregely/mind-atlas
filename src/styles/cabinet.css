@@ -1,0 +1,308 @@
+/* ==========================================================================
+   III. Cabinet of Themes — figures.
+   ========================================================================== */
+
+.cabinet {
+  max-width: 1440px;
+}
+.cab-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 20px;
+  margin-bottom: 44px;
+  border-bottom: 1px solid var(--line-strong);
+}
+.cab-empty {
+  padding: 60px 0;
+  max-width: 520px;
+}
+.cab-empty .display {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.cab-fig {
+  position: relative;
+  margin: 0 0 72px;
+  min-width: 0;
+}
+.cab-fig-lexicon {
+  margin-left: 8%;
+}
+.cab-fig-trace {
+  max-width: 900px;
+  margin-left: auto;
+}
+.cab-split {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 56px;
+  align-items: start;
+}
+@media (max-width: 1000px) {
+  .cab-split {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .cab-fig-lexicon {
+    margin-left: 0;
+  }
+}
+
+.chart {
+  width: 100%;
+  min-width: 0;
+}
+.chart svg {
+  display: block;
+  overflow: visible;
+}
+.axis line {
+  stroke: var(--line-2);
+  stroke-width: 0.7;
+}
+.axis line.axis-faint {
+  stroke: var(--line);
+  stroke-dasharray: 1 4;
+}
+.axis text {
+  font-family: var(--mono);
+  font-size: 9px;
+  fill: var(--ink-3);
+}
+
+/* Fig. I — periodic table */
+
+.ptable {
+  display: grid;
+  gap: 10px;
+}
+.ptable-period {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+.ptable-plabel {
+  display: grid;
+  gap: 2px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line-2);
+}
+.ptable-plabel .mono {
+  font-size: 12px;
+  color: var(--accent);
+}
+.ptable-cells {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.element {
+  position: relative;
+  width: 86px;
+  height: 86px;
+  padding: 0;
+  border: 1px solid var(--line-2);
+  background: color-mix(in srgb, var(--accent) calc(var(--shade) * 40%), transparent);
+  cursor: pointer;
+  transition: border-color 0.25s, transform 0.25s var(--ease);
+  overflow: hidden;
+}
+.element:hover {
+  border-color: var(--accent);
+}
+.element.is-on {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
+}
+.el-num,
+.el-count {
+  position: absolute;
+  top: 5px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--ink-2);
+}
+.el-num {
+  left: 6px;
+}
+.el-count {
+  right: 6px;
+  color: var(--ink-3);
+}
+.el-count::before {
+  content: '×';
+}
+.el-sym {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 22px;
+  text-align: center;
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.el-name {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: 6px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--ink-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.el-detail {
+  position: relative;
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 28px;
+  margin-top: 26px;
+  padding: 20px;
+  border: 1px solid var(--line-2);
+  background: color-mix(in srgb, var(--bg-2) 70%, transparent);
+  max-width: 900px;
+  animation: rise 0.4s var(--ease);
+}
+.el-detail-sym {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border: 1px solid var(--accent);
+}
+.el-detail-sym .el-sym {
+  top: 34px;
+  font-size: 46px;
+}
+.el-detail-sym .el-num {
+  font-size: 11px;
+}
+.el-detail h3 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.el-plates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin: 14px 0 10px;
+}
+.el-plates a {
+  text-decoration: none;
+  color: var(--ink-2);
+  font-size: 11px;
+}
+.el-detail .close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+}
+
+/* Fig. II — spectrum */
+
+.spectrum .sp-hit {
+  fill: transparent;
+  cursor: pointer;
+}
+.spectrum .sp-row:hover .sp-hit {
+  fill: var(--accent-soft);
+}
+.spectrum .sp-label {
+  font-family: var(--serif);
+  font-size: 13.5px;
+  fill: var(--ink-2);
+  pointer-events: none;
+}
+.spectrum .sp-base {
+  stroke: var(--line);
+  stroke-width: 0.6;
+}
+.spectrum .sp-line {
+  stroke: var(--ink);
+  stroke-linecap: butt;
+  opacity: 0.85;
+}
+.spectrum .sp-row.is-on .sp-line {
+  stroke: var(--accent);
+  opacity: 1;
+}
+.spectrum .sp-row.is-on .sp-label {
+  fill: var(--accent);
+}
+
+/* Fig. III — strata */
+
+.strata .stratum {
+  stroke: var(--line-strong);
+  stroke-width: 0.6;
+}
+.pat-fill {
+  fill: var(--ink);
+  opacity: 0.22;
+}
+.pat-line {
+  stroke: var(--ink);
+  stroke-width: 0.8;
+}
+.pat-dot {
+  fill: var(--ink);
+}
+.strata-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 12px;
+  font-size: 13.5px;
+  color: var(--ink-2);
+}
+.strata-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Fig. IV — lexicon */
+
+.lexicon .lx-base {
+  stroke: var(--line-2);
+}
+.lexicon .lx-line {
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+.lexicon .lx-count {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  fill: var(--ink-3);
+}
+.lexicon .lx-word {
+  font-family: var(--serif);
+  font-size: 13px;
+  fill: var(--ink-2);
+}
+
+/* Fig. V — trace */
+
+.trace .trace-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.2;
+}
+.trace .trace-dot {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1;
+}

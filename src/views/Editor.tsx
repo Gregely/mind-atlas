@@ -77,10 +77,17 @@ export function Editor({ id }: { id?: string }) {
   }, [data.entries]);
 
   const words = wordCount(draft.body);
-  const canSave = (draft.body.trim() || draft.title.trim()) && /^\d{4}-\d{2}-\d{2}$/.test(draft.date);
+  const isSavable = (d: EntryDraft) => !!(d.body.trim() || d.title.trim()) && /^\d{4}-\d{2}-\d{2}$/.test(d.date);
+  const canSave = isSavable(draft);
+
+  // The latest draft, readable from keyboard handlers even mid-event
+  // (e.g. a tag committed by the same Ctrl+Enter that saves).
+  const draftRef = useRef(draft);
+  draftRef.current = draft;
 
   const save = () => {
-    if (!canSave) return;
+    const draft = draftRef.current;
+    if (!isSavable(draft)) return;
     if (existing) {
       dispatch({ type: 'updateEntry', id: existing.id, draft });
       navigate(`/plate/${existing.id}`);

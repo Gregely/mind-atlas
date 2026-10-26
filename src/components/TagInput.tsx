@@ -32,6 +32,11 @@ export function TagInput({ value, onChange, known, id }: Props) {
   };
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.ctrlKey || e.metaKey) {
+      // Leave Ctrl/⌘+Enter to the editor (save); keep any half-typed tag.
+      if (e.key === 'Enter' && text.trim()) add(text);
+      return;
+    }
     if (e.key === 'Enter' || e.key === ',' || (e.key === 'Tab' && text.trim())) {
       e.preventDefault();
       add(matches[active] && e.key !== ',' ? matches[active] : text);

@@ -6,6 +6,13 @@ with its own instrument-like glyph, plotted on a star chart that keeps growing o
 Everything stays in your browser (localStorage). There is no backend and no network
 use except for loading Google Fonts.
 
+## Guide video
+
+**[▶ Watch the guide (docs/mind-atlas-guide.mp4)](docs/mind-atlas-guide.mp4)** — a 3½-minute walkthrough
+of writing a plate, the Atlas, the Cabinet, Open Questions, Reading Back, search and backups,
+ending with six habits for using it well. It uses placeholder demonstration plates.
+Regenerate it with `scripts/record-guide.cjs` (instructions at the top of that file).
+
 ## Run it
 
 Requires Node 18+.
